@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Xarrow from "react-xarrows";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
+const Container = styled.div`
+    display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+`
 const Title = styled.p`
     font-size: 40px;
     text-align: center;
@@ -23,6 +30,24 @@ const Column = styled.div`
             font-weight: bold;
         }
     }
+
+    @media only screen and (max-width: 600px) {
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+    }
+    li {
+        padding-bottom: 10px;
+        min-width: 75px;
+        font-size: 0.6rem;
+        cursor: pointer;
+        &:hover{
+            font-weight: bold;
+        }
+    }
+}
 `
 
 const Parent = styled.div`
@@ -30,6 +55,9 @@ const Parent = styled.div`
     justify-content: space-around;
     align-items: center;
     padding-top: 100px;
+    @media only screen and (max-width: 600px) {
+        padding-top: 30px;
+    }
 `
 
 const Header = styled.div`
@@ -39,19 +67,39 @@ const Header = styled.div`
 `
 
 const Footer = styled.div`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color: white;
+    margin-top: auto;
     text-align: center;
     p {
+        color: white;
         font-size: 0.8rem;
     }
     a {
         color: lightblue;
         text-decoration: none;
     }
+    @media only screen and (max-width: 600px) {
+        
+        p {
+            font-size: 0.5rem;
+        }
+    }
 `
+
+const firebaseConfig = {
+    apiKey: "x",
+    authDomain: "x4prodchart.firebaseapp.com",
+    projectId: "x4prodchart",
+    storageBucket: "x4prodchart.appspot.com",
+    messagingSenderId: "539389007677",
+    appId: "1:539389007677:web:61f198768847220f279754",
+    measurementId: "G-6HS7GYBVN4"
+};
+
+// Initialize Firebase
+/* eslint-disable no-unused-vars */
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+/* eslint-enable no-unused-vars */
 
 let currentClicked = "";
 
@@ -574,7 +622,7 @@ const Main = () => {
     }
 
     return (
-        <div>
+        <Container>
             <Title>X4 Production Chart</Title>
             <Header>
                 <Column><h1>Raw</h1></Column>
@@ -582,7 +630,7 @@ const Main = () => {
                 <Column><h1>Tier 2</h1></Column>
                 <Column><h1>Tier 3</h1></Column>
             </Header>
-            <hr />
+            <hr/>
             <Parent>
                 <Column>
                     <ul id="raw">
@@ -633,7 +681,7 @@ const Main = () => {
                 <p>This project was created as a tool to aid players in X4: Foundations by Egosoft. No official affiliation or endorsement by Egosoft is stated or implied.</p>
                 <p><a href='https://www.paypal.com/donate/?business=W2L8DZCKXZPCY&no_recurring=0&currency_code=USD' target="_blank" rel="noreferrer">Buy me a coffee ❤️☕</a></p>
             </Footer>
-        </div>
+        </Container>
     );
 };
 
