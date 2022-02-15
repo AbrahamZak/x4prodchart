@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Main = () => {
 
@@ -326,7 +326,20 @@ const Main = () => {
         ]
     }
 
-    var camalize = function camalize(str) {
+    const [hovering, setHovering] = useState("");
+
+    useEffect(() => {
+        // If we aren't hovering over anything, delete all lines
+        if (hovering === ""){
+
+        }
+        // In any other case, establish the lines
+        else {
+            console.log(hovering);
+        }
+      }, [hovering]);
+
+    function camalize(str) {
         return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, function (match, chr) {
             return chr.toUpperCase();
         });
@@ -341,52 +354,32 @@ const Main = () => {
                     <p className="text-2xl font-semibold underline decoration-1 underline-offset-4 text-center">Tier 2</p>
                     <p className="text-2xl font-semibold underline decoration-1 underline-offset-4 text-center">Tier 3</p>
                 </div>
-                <div className="grid grid-cols-4">
-                    <div className="py-24">
+                <div className="grid grid-cols-4 py-24">
+                    <div className="self-center">
                         <ul id="raw" className="space-y-4">
                             {materialsData.raw.map((material, index) => (
-                                <div key={index}>
-                                    <li className={camalize(material.materialName) + " text-center text-sm"}>{material.materialName}</li>
-                                    {material.produces?.map((produces, index) => (
-                                        <p key={index}>Produces: {produces}</p>
-                                    ))}
-                                </div>
+                                <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
                             ))}
                         </ul>
                     </div>
-                    <div className="py-24">
-                        <ul id="tier1">
+                    <div className="self-center">
+                        <ul id="tier1" className="space-y-4">
                             {materialsData.tier1.map((material, index) => (
-                                <div key={index}>
-                                    <li className={camalize(material.materialName) + " text-center text-sm"}>{material.materialName}</li>
-                                    {material.produces?.map((produces, index) => (
-                                        <p key={index}>Produces: {produces}</p>
-                                    ))}
-                                </div>
+                                    <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
                             ))}
                         </ul>
                     </div>
-                    <div className="py-24">
-                        <ul id="tier2">
+                    <div className="self-center">
+                        <ul id="tier2" className="space-y-4">
                             {materialsData.tier2.map((material, index) => (
-                                <div key={index}>
-                                    <li className={camalize(material.materialName) + " text-center text-sm"}>{material.materialName}</li>
-                                    {material.produces?.map((produces, index) => (
-                                        <p key={index}>Produces: {produces}</p>
-                                    ))}
-                                </div>
+                                    <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
                             ))}
                         </ul>
                     </div>
-                    <div className="py-24">
-                        <ul id="tier3">
+                    <div className="self-center">
+                        <ul id="tier3" className="space-y-4">
                             {materialsData.tier3.map((material, index) => (
-                                <div key={index}>
-                                    <li className={camalize(material.materialName) + " text-center text-sm"}>{material.materialName}</li>
-                                    {material.produces?.map((produces, index) => (
-                                        <p key={index}>Produces: {produces}</p>
-                                    ))}
-                                </div>
+                                    <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
                             ))}
                         </ul>
                     </div>
