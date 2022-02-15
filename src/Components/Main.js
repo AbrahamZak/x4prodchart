@@ -1,4 +1,36 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const Column = styled.div`
+    text-align: center;
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+    }
+    li {
+        padding-bottom: 10px;
+        min-width: 250px;
+        cursor: pointer;
+        &:hover{
+            font-weight: bold;
+        }
+    }
+`
+
+const Parent = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 150px;
+`
+
+const Header = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`
 
 const Main = () => {
 
@@ -161,7 +193,7 @@ const Main = () => {
             materialType: "tier2",
             materialName: "Meat",
             producedBy: ["Water"],
-            produces: ["Food Ration"]
+            produces: ["Food Rations"]
         },
 
         {
@@ -182,7 +214,7 @@ const Main = () => {
             materialType: "tier2",
             materialName: "Quantum Tubes",
             producedBy: ["Graphene", "Superfluid Coolant"],
-            produces: ["Advanced Electronics", "Claytronics", "Field Coils", "Shield Components", "Turret COmponents"]
+            produces: ["Advanced Electronics", "Claytronics", "Field Coils", "Shield Components", "Turret Components"]
         },
 
         {
@@ -252,7 +284,7 @@ const Main = () => {
             materialType: "tier2",
             materialName: "Wheat",
             producedBy: ["Water"],
-            produces: ["Food Ration", "Medical Supplies", "Spacefuel"]
+            produces: ["Food Rations", "Medical Supplies", "Spacefuel"]
         },
 
         {
@@ -368,17 +400,57 @@ const Main = () => {
         }
     ];
 
-
     const [hovering, setHovering] = useState("");
+    const [points, setPoints] = useState([]);
+    const [forwardLines, setForwardLines] = useState([]);
 
     useEffect(() => {
-        // If we aren't hovering over anything, delete all lines
-        if (hovering === "") {
-        }
-        // In any other case, establish the lines
-        else {
+        // Reset points on every change
+        points.forEach(point => document.getElementById(point).style.fontWeight = "bold")
+    }, [points]);
 
+    useEffect(() => {
+        // Reset points on every change
+        points.forEach(point => document.getElementById(point).style.fontWeight = "normal")
+        
+        function gatherForwardLines(current, distance) {
+            let lines = [];
+            let findCurrentMaterial = materialsData.find(({ materialName }) => materialName === current);
+            if (!findCurrentMaterial || findCurrentMaterial.produces.length === 0) {
+                return lines;
+            }
+            else {
+                for (const produces of findCurrentMaterial.produces) {
+                    lines.push({
+                        from: camalize(current),
+                        to: camalize(produces),
+                        distance: distance
+                    })
+                    lines.push(...gatherForwardLines(produces, distance + 1));
+                }
+            }
+            return lines;
         }
+
+        function gatherAllPoints(current) {
+            let points = [];
+            let findCurrentMaterial = materialsData.find(({ materialName }) => materialName === current);
+            if (!findCurrentMaterial || findCurrentMaterial.produces.length === 0) {
+                return points;
+            }
+            else {
+                for (const produces of findCurrentMaterial.produces) {
+                    points.push(camalize(produces));
+                    points.push(...gatherAllPoints(produces));
+                }
+            }
+            return points;
+        }
+
+        // Establish the lines and bold the points
+        points.forEach(point => document.getElementById(point).style.fontWeight = "normal")
+        setPoints(gatherAllPoints(hovering));
+        setForwardLines(gatherForwardLines(hovering, 1));
     }, [hovering]);
 
     function camalize(str) {
@@ -388,53 +460,52 @@ const Main = () => {
     }
 
     return (
-        <div className="">
-            <div className="grid">
-                <div className="grid grid-cols-4">
-                    <p className="text-2xl font-semibold underline decoration-1 underline-offset-4 text-center">Raw</p>
-                    <p className="text-2xl font-semibold underline decoration-1 underline-offset-4 text-center">Tier 1</p>
-                    <p className="text-2xl font-semibold underline decoration-1 underline-offset-4 text-center">Tier 2</p>
-                    <p className="text-2xl font-semibold underline decoration-1 underline-offset-4 text-center">Tier 3</p>
-                </div>
-                <div className="grid grid-cols-4 py-24">
-                    <div className="self-center">
-                        <ul id="raw" className="space-y-4">
-                            {materialsData
-                                .filter(material => material.materialType === "raw")
-                                .map((material, index) => (
-                                    <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
-                                ))}
-                        </ul>
-                    </div>
-                    <div className="self-center">
-                        <ul id="tier1" className="space-y-4">
-                            {materialsData
-                                .filter(material => material.materialType === "tier1")
-                                .map((material, index) => (
-                                    <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
-                                ))}
-                        </ul>
-                    </div>
-                    <div className="self-center">
-                        <ul id="tier2" className="space-y-4">
-                            {materialsData
-                                .filter(material => material.materialType === "tier2")
-                                .map((material, index) => (
-                                    <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
-                                ))}
-                        </ul>
-                    </div>
-                    <div className="self-center">
-                        <ul id="tier3" className="space-y-4">
-                            {materialsData
-                                .filter(material => material.materialType === "tier3")
-                                .map((material, index) => (
-                                    <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseLeave={() => setHovering("")} className={camalize(material.materialName) + " text-center text-sm hover:font-bold cursor-pointer"}>{material.materialName}</li>
-                                ))}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <Header>
+            <Column><h1>Raw</h1></Column>
+            <Column><h1>Tier 1</h1></Column>
+            <Column><h1>Tier 2</h1></Column>
+            <Column><h1>Tier 3</h1></Column>
+            </Header>
+            <hr/>
+            <Parent>
+                <Column>
+                    <ul id="raw">
+                        {materialsData
+                            .filter(material => material.materialType === "raw")
+                            .map((material, index) => (
+                                <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseOut={() => setHovering("")} id={camalize(material.materialName)}>{material.materialName}</li>
+                            ))}
+                    </ul>
+                </Column>
+                <Column>
+                    <ul id="tier1">
+                        {materialsData
+                            .filter(material => material.materialType === "tier1")
+                            .map((material, index) => (
+                                <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseOut={() => setHovering("")} id={camalize(material.materialName)}>{material.materialName}</li>
+                            ))}
+                    </ul>
+                </Column>
+                <Column>
+                    <ul id="tier2">
+                        {materialsData
+                            .filter(material => material.materialType === "tier2")
+                            .map((material, index) => (
+                                <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseOut={() => setHovering("")} id={camalize(material.materialName)}>{material.materialName}</li>
+                            ))}
+                    </ul>
+                </Column>
+                <Column>
+                    <ul id="tier3">
+                        {materialsData
+                            .filter(material => material.materialType === "tier3")
+                            .map((material, index) => (
+                                <li key={index} onMouseEnter={() => setHovering(material.materialName)} onMouseOut={() => setHovering("")} id={camalize(material.materialName)}>{material.materialName}</li>
+                            ))}
+                    </ul>
+                </Column>
+            </Parent>
         </div>
     );
 };
