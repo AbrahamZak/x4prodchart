@@ -629,9 +629,9 @@ const Main = () => {
             </div>
             <Footer>
                 <p>© Abraham Zakharov 2022. All rights reserved.</p>
-                <p>Developed by <a href='https://abrahamzakharov.com' target="_blank">Abraham Zakharov</a>. Concept by Alex Robles.</p>
-                <p>This project was created as a tool to aid users in X4: Foundations by Egosoft. No official affiliation or endorsement by Egosoft is stated or implied.</p>
-                <p><a href='https://www.paypal.com/donate/?business=W2L8DZCKXZPCY&no_recurring=0&currency_code=USD' target="_blank">Buy me a coffee ❤️☕</a></p>
+                <p>Developed by <a href='https://abrahamzakharov.com' target="_blank" rel="noreferrer">Abraham Zakharov</a>. Concept by Alex Robles.</p>
+                <p>This project was created as a tool to aid players in X4: Foundations by Egosoft. No official affiliation or endorsement by Egosoft is stated or implied.</p>
+                <p><a href='https://www.paypal.com/donate/?business=W2L8DZCKXZPCY&no_recurring=0&currency_code=USD' target="_blank" rel="noreferrer">Buy me a coffee ❤️☕</a></p>
             </Footer>
         </div>
     );
