@@ -6,8 +6,8 @@ import { getAnalytics } from "firebase/analytics";
 
 const Container = styled.div`
     display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    min-height: 100vh;
+    flex-direction: column;
 `
 const Title = styled.p`
     font-size: 40px;
