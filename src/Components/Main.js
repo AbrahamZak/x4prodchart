@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import Xarrow from "react-xarrows";
 import { initializeApp } from "firebase/app";
@@ -86,7 +86,7 @@ const Footer = styled.div`
 `
 
 const firebaseConfig = {
-    apiKey: "x",
+    apiKey: "AIzaSyCCOTx3MjpvZEGKeei5uIXf-dCvwuwTaGU",
     authDomain: "x4prodchart.firebaseapp.com",
     projectId: "x4prodchart",
     storageBucket: "x4prodchart.appspot.com",
@@ -100,8 +100,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 /* eslint-enable no-unused-vars */
-
-let currentClicked = "";
 
 const materialsData = [
     {
@@ -491,6 +489,7 @@ function camalize(str) {
 const Main = () => {
     const [points, setPoints] = useState([]);
     const [lines, setLines] = useState([]);
+    const currentClicked = useRef("");
 
     useEffect(() => {
         points.forEach(point => document.getElementById(point.name).style.fontWeight = "bold");
@@ -574,12 +573,11 @@ const Main = () => {
             return points;
         }
 
-        if (currentClicked === "") {
+        if (currentClicked.current === "") {
             // Points logic to bold current selection and its chain
             if (points.length > 0) {
                 points.forEach(point => document.getElementById(point.name).style.fontWeight = null);
                 points.forEach(point => document.getElementById(point.name).style.color = "white");
-                setPoints([]);
                 setPoints(gatherForwardPoints(material, 1).concat(gatherBackwardsPoints(material, 1)));
             }
             else {
@@ -588,7 +586,6 @@ const Main = () => {
 
             // Lines logic to generate line for current selection and its chain
             if (lines.length > 0) {
-                setLines([]);
                 setLines(gatherForwardLines(material, 1).concat(gatherBackwardLines(material, 1)));
             }
             else {
@@ -599,24 +596,24 @@ const Main = () => {
 
     function clickHandler(material) {
         // If we reclicked on the same thing, deselect it
-        if (currentClicked === material) {
+        if (currentClicked.current === material) {
             document.getElementById(camalize(material)).style.fontWeight = null;
-            currentClicked = "";
+            currentClicked.current = "";
         }
 
         // If we clicked on something new from not being clicked in, set it as our clicked
-        else if (currentClicked === "") {
+        else if (currentClicked.current === "") {
             document.getElementById(camalize(material)).style.fontWeight = "bold";
-            currentClicked = material;
+            currentClicked.current = material;
         }
 
         // If we clicked on something else while currently being clicked in
         else {
-            document.getElementById(camalize(currentClicked)).style.fontWeight = null;
+            document.getElementById(camalize(currentClicked.current)).style.fontWeight = null;
             document.getElementById(camalize(material)).style.fontWeight = "bold";
-            currentClicked = "";
+            currentClicked.current = "";
             mouseHandler(material);
-            currentClicked = material;
+            currentClicked.current = material;
             mouseHandler(material);
         }
     }
