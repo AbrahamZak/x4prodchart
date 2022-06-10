@@ -1,0 +1,475 @@
+[
+    {
+        "materialType": "raw",
+        "materialName": "Helium",
+        "producedBy": [],
+        "produces": ["Metallic Microlattice", "Stimulants", "Superfluid Coolant"]
+    },
+
+    {
+        "materialType": "raw",
+        "materialName": "Hydrogen",
+        "producedBy": [],
+        "produces": ["Antimatter Cells", "Computronic Substrate"]
+    },
+
+    {
+        "materialType": "raw",
+        "materialName": "Ice",
+        "producedBy": [],
+        "produces": ["Protein Paste", "Water", "Medical Supplies"]
+    },
+
+    {
+        "materialType": "raw",
+        "materialName": "Methane",
+        "producedBy": [],
+        "produces": ["Graphene", "Protein Paste", "Silicon Carbide"]
+    },
+
+    {
+        "materialType": "raw",
+        "materialName": "Ore",
+        "producedBy": [],
+        "produces": ["Computronic Substrate", "Metallic Microlattice", "Refined Metals", "Teladianium"]
+    },
+
+    {
+        "materialType": "raw",
+        "materialName": "Silicon",
+        "producedBy": [],
+        "produces": ["Computronic Substrate", "Silicon Wafers", "Stimulants", "Silicon Carbide"]
+    },
+
+    {
+        "materialType": "raw",
+        "materialName": "Raw Scrap",
+        "producedBy": [],
+        "produces": ["Scrap Metal"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Antimatter Cells",
+        "producedBy": ["Hydrogen"],
+        "produces": ["Engine Parts", "Claytronics"]	
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Computronic Substrate",
+        "producedBy": ["Hydrogen", "Ore", "Silicon"],
+        "produces": [],
+        "producedByOptions": [
+            {
+                "faction": "Universal",
+                "producedBy": ["Hydrogen", "Ore", "Silicon"]
+            },
+            {
+                "faction": "Recycling",
+                "producedBy": ["Scrap Metal"]
+            }
+         ]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Graphene",
+        "producedBy": ["Methane"],
+        "produces": ["Advanced Composites", "Hull Parts", "Plasma Conductors", "Quantum Tubes"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Metallic Microlattice",
+        "producedBy": ["Helium", "Ore"],
+        "produces": ["Silicon Carbide"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Protein Paste",
+        "producedBy": ["Ice", "Methane"],
+        "produces": ["Terran MRE", "Medical Supplies"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Refined Metals",
+        "producedBy": ["Ore"],
+        "produces": ["Advanced Composites", "Engine Parts", "Hull Parts", "Scanning Arrays"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Silicon Wafers",
+        "producedBy": ["Silicon"],
+        "produces": ["Microchips", "Scanning Arrays", "Smart Chips"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Stimulants",
+        "producedBy": ["Helium", "Silicon"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Superfluid Coolant",
+        "producedBy": ["Helium"],
+        "produces": ["Plasma Conductors", "Quantum Tubes"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Teladianium",
+        "producedBy": ["Ore"],
+        "produces": ["Hull Parts", "Advanced Composites", "Scanning Arrays", "Engine Parts"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Water",
+        "producedBy": ["Ice"],
+        "produces": ["Chelt Meat", "Maja Snails", "Meat", "Scruffin Fruit", "Soja Beans", "Spices", "Sunrise Flowers", "Swamp Plant", "Wheat", "Medical Supplies", "Nostrop Oil", "Spacefuel"]
+    },
+
+    {
+        "materialType": "tier1",
+        "materialName": "Scrap Metal",
+        "producedBy": ["Raw Scrap"],
+        "produces": ["Claytronics", "Hull Parts", "Computronic Substrate", "Silicon Carbide"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Advanced Composites",
+        "producedBy": ["Graphene", "Refined Metals"],
+        "produces": ["Antimatter Converters", "Missile Components"],
+        "producedByOptions": [
+              {
+                    "faction": "Universal",
+                    "producedBy": ["Graphene", "Refined Metals"]
+              },
+              {
+                    "faction": "Teladi",
+                    "producedBy": ["Graphene", "Teladianium"]
+              }
+         ]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Chelt Meat",
+        "producedBy": ["Water"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Engine Parts",
+        "producedBy": ["Antimatter Cells", "Refined Metals"],
+        "produces": ["Drone Components"],
+        "producedByOptions": [
+            {
+                "faction": "Universal",
+                "producedBy": ["Antimatter Cells", "Refined Metals"]
+            },
+            {
+                "faction": "Teladi",
+                "producedBy": ["Antimatter Cells", "Teladianium"]
+            }
+        ]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Hull Parts",
+        "producedBy": ["Graphene", "Refined Metals"],
+        "produces": ["Drone Components", "Missile Components", "Weapons Components"],
+        "producedByOptions": [
+            {
+                "faction": "Universal",
+                "producedBy": ["Graphene", "Refined Metals"]
+            },
+            {
+                "faction": "Teladi",
+                "producedBy": ["Graphene", "Teladianium"]
+            },
+            {
+                "faction": "Recycling",
+                "producedBy": ["Scrap Metal"]
+            }
+        ]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Maja Snails",
+        "producedBy": ["Water"],
+        "produces": ["Maja Dust", "Soja Husk"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Meat",
+        "producedBy": ["Water"],
+        "produces": ["Food Rations"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Microchips",
+        "producedBy": ["Silicon Wafers"],
+        "produces": ["Advanced Electronics", "Antimatter Converters", "Claytronics", "Drone Components", "Turret Components"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Plasma Conductors",
+        "producedBy": ["Graphene", "Superfluid Coolant"],
+        "produces": ["Field Coils", "Shield Components", "Weapons Components"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Quantum Tubes",
+        "producedBy": ["Graphene", "Superfluid Coolant"],
+        "produces": ["Advanced Electronics", "Claytronics", "Field Coils", "Shield Components", "Turret Components"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Scanning Arrays",
+        "producedBy": ["Refined Metals", "Silicon Wafers"],
+        "produces": ["Drone Components", "Turret Components"],
+        "producedByOptions": [
+            {
+                "faction": "Universal",
+                "producedBy": ["Refined Metals", "Silicon Wafers"]
+            },
+            {
+                "faction": "Teladi",
+                "producedBy": ["Teladianium", "Silicon Wafers"]
+            }
+        ]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Scruffin Fruit",
+        "producedBy": ["Water"],
+        "produces": ["Medical Supplies"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Silicon Carbide",
+        "producedBy": ["Metallic Microlattice", "Methane", "Silicon"],
+        "produces": [],
+        "producedByOptions": [
+            {
+                "faction": "Universal",
+                "producedBy": ["Metallic Microlattice", "Methane", "silicon"]
+            },
+            {    
+                "faction": "Recycling",
+                "producedBy": ["Scrap Metal"]
+            }
+        ]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Smart Chips",
+        "producedBy": ["Silicon Wafers"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Soja Beans",
+        "producedBy": ["Water"],
+        "produces": ["Soja Husk", "Medical Supplies"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Spices",
+        "producedBy": ["Water"],
+        "produces": ["Food Rations", "Maja Dust", "Medical Supplies", "Nostrop Oil", "Soja Husk", "Spaceweed"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Sunrise Flowers",
+        "producedBy": ["Water"],
+        "produces": ["Nostrop Oil", "Medical Supplies"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Swamp Plant",
+        "producedBy": ["Water"],
+        "produces": ["Spaceweed"]
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Terran MRE",
+        "producedBy": ["Protein Paste"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier2",
+        "materialName": "Wheat",
+        "producedBy": ["Water"],
+        "produces": ["Food Rations", "Medical Supplies", "Spacefuel"]
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Advanced Electronics",
+        "producedBy": ["Microchips", "Quantum Tubes"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Antimatter Converters",
+        "producedBy": ["Microchips", "Advanced Composites"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Claytronics",
+        "producedBy": ["Microchips", "Quantum Tubes", "Antimatter Cells"],
+        "produces": [],
+        "producedByOptions": [
+            {
+                "faction": "Universal",
+                "producedBy": ["Antimatter Cells", "Microchips", "Quantum Tubes"]
+            },
+            {    
+                "faction": "Recycling",
+                "producedBy": ["Scrap Metal"]
+            }
+        ]
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Drone Components",
+        "producedBy": ["Engine Parts", "Hull Parts", "Microchips", "Scanning Arrays"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Field Coils",
+        "producedBy": ["Plasma Conductors", "Quantum Tubes"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Food Rations",
+        "producedBy": ["Meat", "Spices", "Wheat"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Maja Dust",
+        "producedBy": ["Maja Snails", "Spices"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Medical Supplies",
+        "producedBy": ["Spices", "Wheat", "Water"],
+        "produces": [],
+        "producedByOptions": [
+            {
+                "faction": "Universal",
+                "producedBy": ["Spices", "Water", "Wheat"]
+            },
+            {    
+                "faction": "Paranid",
+                "producedBy": ["Soja Beans", "Spices", "Water"]
+            },
+            {    
+                "faction": "Split",
+                "producedBy": ["Scruffin Fruit", "Spices", "Water"]
+            },
+            {    
+                "faction": "Teladi",
+                "producedBy": ["Spices", "Sunrise Flowers", "Water"]
+            },
+            {    
+                "faction": "Terran",
+                "producedBy": ["Ice", "Protein Paste"]
+            }
+        ]
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Missile Components",
+        "producedBy": ["Advanced Composites", "Hull Parts"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Nostrop Oil",
+        "producedBy": ["Spices", "Sunrise Flowers", "Water"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Shield Components",
+        "producedBy": ["Plasma Conductors", "Quantum Tubes"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Soja Husk",
+        "producedBy": ["Maja Snails", "Soja Beans", "Spices"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Spacefuel",
+        "producedBy": ["Wheat", "Water"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Spaceweed",
+        "producedBy": ["Spices", "Swamp Plant"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Turret Components",
+        "producedBy": ["Microchips", "Quantum Tubes", "Scanning Arrays"],
+        "produces": []
+    },
+
+    {
+        "materialType": "tier3",
+        "materialName": "Weapons Components",
+        "producedBy": ["Hull Parts", "Plasma Conductors"],
+        "produces": []
+    }
+]
