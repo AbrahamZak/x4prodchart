@@ -86,6 +86,27 @@ const Footer = styled.div`
     }
 `
 
+const RadioContainer = styled.div`
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    input[type=radio] {
+        display: block;
+        margin: 0 auto;
+    }
+    label {
+        display: inline-block;
+        font-size: 0.75rem;
+    }
+    input:checked + span {
+        font-weight: bold;
+    }
+`
+
+const FactionLabel = styled.span`
+    color: ${props => props.color || '#fff'};
+`
+
 const firebaseConfig = {
     apiKey: "AIzaSyCCOTx3MjpvZEGKeei5uIXf-dCvwuwTaGU",
     authDomain: "x4prodchart.firebaseapp.com",
@@ -113,6 +134,15 @@ const colorMap = {
         2: "green",
         3: "red"
     }
+}
+
+const radioLabelColors = {
+        "Universal": "lightblue",
+        "Paranid": "pink",
+        "Split": "orange",
+        "Teladi": "lightgreen",
+        "Terran": "teal",
+        "Recycling": "lightgrey"
 }
 
 function camalize(str) {
@@ -298,23 +328,27 @@ const Main = () => {
                             .filter(material => material.materialType === "tier2")
                             .map((material, index) => (
                                 <div key={index}>
+                                <RadioContainer>
                                 {material.producedByOptions?.map((option, radioIndex) => (
-                                    <input key={radioIndex} type="radio" name={material.materialName} value={option.producedBy} defaultChecked={option.faction === "Universal"} onChange={()=> { material.producedBy = option.producedBy; optionHandler(material.materialName) }}/> 
+                                    <label key={radioIndex}><input key={radioIndex} id={radioIndex} type="radio" name={material.materialName} value={option.producedBy} defaultChecked={option.faction === "Universal"} onChange={()=> { material.producedBy = option.producedBy; optionHandler(material.materialName) }}/><FactionLabel color={radioLabelColors[option.faction]}>{option.faction}</FactionLabel></label>
                                 ))}
+                                </RadioContainer>
                                 <li onClick={() => clickHandler(material.materialName)} onMouseOver={() => mouseHandler(material.materialName)} onMouseLeave={() => mouseHandler("")} id={camalize(material.materialName)}>{material.materialName}</li>
                                 </div>
                             ))}
                     </ul>
                 </Column>
                 <Column>
-                    <ul id="tier3">
+                <ul id="tier3">
                         {materialsData
                             .filter(material => material.materialType === "tier3")
                             .map((material, index) => (
                                 <div key={index}>
+                                <RadioContainer>
                                 {material.producedByOptions?.map((option, radioIndex) => (
-                                    <input key={radioIndex} type="radio" name={material.materialName} value={option.producedBy} defaultChecked={option.faction === "Universal"} onChange={()=> { material.producedBy = option.producedBy; optionHandler(material.materialName) }}/> 
+                                    <label key={radioIndex}><input key={radioIndex} id={radioIndex} type="radio" name={material.materialName} value={option.producedBy} defaultChecked={option.faction === "Universal"} onChange={()=> { material.producedBy = option.producedBy; optionHandler(material.materialName) }}/><FactionLabel color={radioLabelColors[option.faction]}>{option.faction}</FactionLabel></label>
                                 ))}
+                                </RadioContainer>
                                 <li onClick={() => clickHandler(material.materialName)} onMouseOver={() => mouseHandler(material.materialName)} onMouseLeave={() => mouseHandler("")} id={camalize(material.materialName)}>{material.materialName}</li>
                                 </div>
                             ))}
