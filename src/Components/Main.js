@@ -79,7 +79,6 @@ const Footer = styled.div`
         text-decoration: none;
     }
     @media only screen and (max-width: 600px) {
-        
         p {
             font-size: 0.5rem;
         }
@@ -100,6 +99,11 @@ const RadioContainer = styled.div`
     }
     input:checked + span {
         font-weight: bold;
+    }
+    @media only screen and (max-width: 600px) {
+        label {
+            font-size: 0.4rem;
+        }
     }
 `
 
@@ -315,10 +319,17 @@ const Main = () => {
                 </Column>
                 <Column>
                     <ul id="tier1">
-                        {materialsData
+                    {materialsData
                             .filter(material => material.materialType === "tier1")
                             .map((material, index) => (
-                                <li key={index} onClick={() => clickHandler(material.materialName)} onMouseOver={() => mouseHandler(material.materialName)} onMouseLeave={() => mouseHandler("")} id={camalize(material.materialName)}>{material.materialName}</li>
+                                <div key={index}>
+                                <RadioContainer>
+                                {material.producedByOptions?.map((option, radioIndex) => (
+                                    <label key={radioIndex}><input key={radioIndex} id={radioIndex} type="radio" name={material.materialName} value={option.producedBy} defaultChecked={option.faction === "Universal"} onChange={()=> { material.producedBy = option.producedBy; optionHandler(material.materialName) }}/><FactionLabel color={radioLabelColors[option.faction]}>{option.faction}</FactionLabel></label>
+                                ))}
+                                </RadioContainer>
+                                <li onClick={() => clickHandler(material.materialName)} onMouseOver={() => mouseHandler(material.materialName)} onMouseLeave={() => mouseHandler("")} id={camalize(material.materialName)}>{material.materialName}</li>
+                                </div>
                             ))}
                     </ul>
                 </Column>
