@@ -316,6 +316,7 @@ const Main = () => {
                     <ul id="raw">
                         {materialsData
                             .filter(material => material.materialType === "raw")
+                            .sort((a, b)=> (a.materialName > b.materialName ? 1 : -1))
                             .map((material, index) => (
                                 <li key={index} onClick={() => clickHandler(material.materialName)} onMouseOver={() => mouseHandler(material.materialName)} onMouseLeave={() => mouseHandler("")} id={camalize(material.materialName)}>{material.materialName}</li>
                             ))}
@@ -325,6 +326,7 @@ const Main = () => {
                     <ul id="tier1">
                     {materialsData
                             .filter(material => material.materialType === "tier1")
+                            .sort((a, b)=> (a.materialName > b.materialName ? 1 : -1))
                             .map((material, index) => (
                                 <div key={index}>
                                 <RadioContainer>
@@ -341,6 +343,7 @@ const Main = () => {
                     <ul id="tier2">
                         {materialsData
                             .filter(material => material.materialType === "tier2")
+                            .sort((a, b)=> (a.materialName > b.materialName ? 1 : -1))
                             .map((material, index) => (
                                 <div key={index}>
                                 <RadioContainer>
@@ -357,6 +360,7 @@ const Main = () => {
                 <ul id="tier3">
                         {materialsData
                             .filter(material => material.materialType === "tier3")
+                            .sort((a, b)=> (a.materialName > b.materialName ? 1 : -1))
                             .map((material, index) => (
                                 <div key={index}>
                                 <RadioContainer>
