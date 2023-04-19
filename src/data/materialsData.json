@@ -132,7 +132,7 @@
         "materialType": "tier1",
         "materialName": "Water",
         "producedBy": ["Ice"],
-        "produces": ["Chelt Meat", "Maja Snails", "Meat", "Scruffin Fruit", "Soja Beans", "Spices", "Sunrise Flowers", "Swamp Plant", "Wheat", "Medical Supplies", "Nostrop Oil", "Spacefuel"]
+        "produces": ["Chelt Meat", "Maja Snails", "Meat", "Scruffin Fruit", "Soja Beans", "Spices", "Sunrise Flowers", "Swamp Plant", "Wheat", "Medical Supplies", "Nostrop Oil", "Spacefuel", "BoGas", "Plankton"]
     },
 
     {
@@ -328,6 +328,19 @@
         "producedBy": ["Water"],
         "produces": ["Food Rations", "Medical Supplies", "Spacefuel"]
     },
+	
+	{
+		"materialType": "tier2",
+		"materialName": "BoGas",
+		"producedBy": ["Water"],
+		"produces": ["BoFu"]
+	},
+	
+	{	"materialType": "tier2",
+		"materialName": "Plankton",
+		"producedBy": ["Water"],
+		"produces": ["BoFu", "Medical Supplies"]
+    },
 
     {
         "materialType": "tier3",
@@ -413,7 +426,11 @@
             {    
                 "faction": "Terran",
                 "producedBy": ["Ice", "Protein Paste"]
-            }
+            },
+			{
+				"faction": "Boron",
+				"producedBy": ["Water", "Plankton"]
+			}
         ]
     },
 
@@ -471,5 +488,12 @@
         "materialName": "Weapons Components",
         "producedBy": ["Hull Parts", "Plasma Conductors"],
         "produces": []
-    }
+    },
+	
+	{
+		"materialType": "tier3",
+		"materialName": "BoFu",
+		"producedBy": ["BoGas", "Plankton"],
+		"produces": [] 
+	}
 ]

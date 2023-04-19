@@ -9,6 +9,10 @@ const Container = styled.div`
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+
+    @media only screen and (max-width: 600px) {
+        width: 200vw;
+    }
 `
 const Title = styled.p`
     font-size: 40px;
